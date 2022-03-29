@@ -2,44 +2,44 @@ using System.IO;
 
 public class Salvataggi
 {
+	static string cfg = @"C:\Program Files\EPLAN\Common\cfg.txt";
 	Form1 form1 = new Form1();
+		
+	//Funzione per leggere dal file cfg
+    static string leggi()
+    {
+        string read;
+        StreamReader sr = new StreamReader(cfg);
+        read = sr.ReadLine();
+        sr.Close();
+        if (read == null)
+        {
+            return @"C:\BackupEplan";
+        }
+        else
+        {
+            return read;
+        }
+    }
+
+    //Funzione per scrivere sul file cfg
+    static void scrivi(string text)
+    {
+        StreamWriter sw = new StreamWriter(cfg,false);
+        sw.WriteLine(text);
+        sw.Close();
+    }
 
 	public class Form1 : Form
 	{
-		//Funzione per leggere dal file cfg
-	    	string cfg = @"C:\Program Files\EPLAN\Common\cfg.txt";
 		Button b1 = new Button();
 		TextBox tb1 = new TextBox();
-		
-        public string leggi()
-        {
-            string read;
-            StreamReader sr = new StreamReader(this.cfg);
-            read = sr.ReadLine();
-            sr.Close();
-            if (read == null)
-            {
-                return @"C:\BackupEplan";
-            }
-            else
-            {
-                return read;
-            }
-        }
-
-        //Funzione per scrivere sul file cfg
-        public void scrivi(string text)
-        {
-            StreamWriter sw = new StreamWriter(this.cfg,false);
-            sw.WriteLine(text);
-            sw.Close();
-        }
 
 		//Inizializzazione del Form
 		public void Init ()
 		{
 			//Lettura percorso da file
-			this.tb1.Text = leggi();
+			this.tb1.Text = Salvataggi.leggi();
 			//Form
 			this.StartPosition = FormStartPosition.CenterScreen;
 			this.Text = "Settaggio Cartella";		
@@ -55,7 +55,7 @@ public class Salvataggi
 			path.ReadOnly = true;
 			path.BorderStyle = 0;
 			path.BackColor = this.BackColor;
-			path.Text = leggi();
+			path.Text = Salvataggi.leggi();
 			Label descr2 = new Label();
 			descr2.Text = "Inserisci il nuovo percorso: ";
 			//Textbox
@@ -99,7 +99,7 @@ public class Salvataggi
         //Funzione richiamata quando si preme il tasto OK del Form
 		private void Premuto(object sender, EventArgs e)
 		{
-			scrivi(this.tb1.Text);
+			Salvataggi.scrivi(this.tb1.Text);
 			this.Close();
 			return;
 		}
@@ -143,7 +143,7 @@ public class Salvataggi
 	public void saveFast()
 	{
 		ActionCallingContext backupContext = new ActionCallingContext();
-		string folder = this.form1.leggi();
+		string folder = Salvataggi.leggi();
 		backupContext = context(backupAmount: "BACKUPAMOUNT_MIN", destinationPath: folder);
 		new CommandLineInterpreter().Execute("backup", backupContext);
 		MessageBox.Show("Operazione eseguita","Progetto salvato",MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -155,7 +155,7 @@ public class Salvataggi
 	public void saveAll()
 	{
 		ActionCallingContext backupContext = new ActionCallingContext();
-		string folder = this.form1.leggi();
+		string folder = Salvataggi.leggi();
 		backupContext = context(backupAmount: "BACKUPAMOUNT_ALL", destinationPath: folder);
 		new CommandLineInterpreter().Execute("backup", backupContext);
 		MessageBox.Show("Operazione eseguita","Progetto salvato",MessageBoxButtons.OK, MessageBoxIcon.Information);
