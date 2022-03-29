@@ -1,6 +1,12 @@
 
 # Scripts Eplan
 
+---
+
+In lavorazione
+
+---
+
 ## Funzione
 
 Script **C#** per gestione e automatizzazione di processi *Eplan*.
@@ -12,6 +18,7 @@ Script **C#** per gestione e automatizzazione di processi *Eplan*.
     - NoStampa.cs
     - Lingue.cs
 - Procedura d'installazione
+- Contatti
 
 ## Contenuto Progetto
 
@@ -42,3 +49,5 @@ Una volta caricato lo script, le relative azioni saranno disponibili all'interno
 ### Disinstallazione
 
 Per rimuovere lo script da Eplan, basterà selezionare la voce `Programmi di servizio->Script->Scarica...`
+
+### Contatti
