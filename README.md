@@ -34,7 +34,7 @@ Di seguito una panoramica file per file.
 - Necessita la creazione di un file `cfg.txt` all'interno della cartella: `C:\Program Files\EPLAN\Common`
   > **NOTA:** Il file deve essere creato a mano precedentemente per problemi relativi ai permessi di scrittura. Il contenuto può anche essere vuoto.
   >       Per cambiare la cartella in cui salvare il file `cfg.txt`, basta modificare il valore della variabile string cfg all'interno del codice alla riga 5.
-  >       `string cfg = @"C:\Program Files\EPLAN\Common\cfg.txt";`. *Ricordarsi di inserire anche il nome del file e l'estenzione*
+  >       `static string cfg = @"C:\Program Files\EPLAN\Common\cfg.txt";`. *Ricordarsi di inserire anche il nome del file e l'estenzione*
 
 ### 
 
