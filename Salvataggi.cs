@@ -6,11 +6,11 @@ public class Salvataggi
 
 	public class Form1 : Form
 	{
-	    string cfg = @"C:\Program Files\EPLAN\Common\cfg.txt";
+		//Funzione per leggere dal file cfg
+	    	string cfg = @"C:\Program Files\EPLAN\Common\cfg.txt";
 		Button b1 = new Button();
 		TextBox tb1 = new TextBox();
 		
-		//Funzione per leggere dal file cfg
         public string leggi()
         {
             string read;
